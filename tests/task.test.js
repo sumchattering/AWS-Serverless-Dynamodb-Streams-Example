@@ -1,6 +1,4 @@
-'use strict';
-
-const Task = require('../models/task')
+import Task from '../models/task'
 
 test('test-badkeys', () => {
     try {

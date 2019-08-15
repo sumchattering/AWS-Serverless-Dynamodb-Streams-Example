@@ -4,7 +4,7 @@
   "description": "A Node.js example for the Serverless Framework for working with dyanmodb streams",
   "main": "handler.js",
   "scripts": {
-    "test": "jest"
+    "test": "serverless-bundle test"
   },
   "license": "MIT",
   "author": "Sumeru Chatterjee",
@@ -14,8 +14,7 @@
   },
   "devDependencies": {
     "aws-sdk": "^2.507.0",
-    "jest": "^24.8.0",
-    "serverless-bundle": "^1.2.2",
+    "serverless-bundle": "^1.2.3",
     "serverless-dynamodb-local": "^0.2.38",
     "serverless-offline": "^5.3.3"
   },

@@ -1,4 +1,4 @@
-const Joi = require('joi');
+import Joi from "joi";
 
 function Task(opts) {
     const validationError = Joi.validate(opts, {
@@ -14,4 +14,4 @@ function Task(opts) {
     Object.assign(this, opts);
 }
 
-module.exports = Task;
+export default Task;

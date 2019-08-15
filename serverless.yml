@@ -17,10 +17,25 @@ provider:
   runtime: nodejs8.10
   region: eu-central-1
   environment: ${self:custom.env}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Scan
+        - dynamodb:Query
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:eu-central-1:*:*"
 
 functions:
   createTask:
     handler: handler.createTask
+    events:
+      - http:
+          path: createTask
+          method: post
     
 package:
   individually: true

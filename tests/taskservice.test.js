@@ -1,9 +1,7 @@
-'use strict';
+import TaskService from '../services/taskservice'
 
-const AWS = require("aws-sdk");
+import AWS from "aws-sdk";
 AWS.config.update({ region: 'eu-central-1' });
-
-const TaskService = require('../services/taskservice')
 
 test('test-createtask', async () => {
     let taskName = "Sample Task"

@@ -1,10 +1,6 @@
-const AWS =require("aws-sdk");
+import AWS from "aws-sdk";
 
-module.exports = {
-    call
-};
-
-function call(action, params) {
+export function call(action, params) {
     const dynamoDB = new AWS.DynamoDB.DocumentClient();
     return dynamoDB[action](params).promise();
 }

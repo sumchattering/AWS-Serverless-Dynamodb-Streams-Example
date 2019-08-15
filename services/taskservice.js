@@ -1,18 +1,16 @@
-const Task = require('../models/Task');
-const dynamoDBLib = require('../util/dynamodb-lib');
-const uuid = require('uuid');
+import Task from '../models/Task';
+import * as dynamoDBLib from "../util/dynamodb-lib";
+import uuid from 'uuid';
+
+const tasksTableName = "tasks";
 
 function TaskService(opts) {
     Object.assign(this, opts);
 }
 
-module.exports = TaskService;
-
 TaskService.prototype = {
     createNewTask
 };
-
-const tasksTableName = "tasks";
 
 async function createNewTask(taskName) {
 
@@ -33,7 +31,8 @@ async function createNewTask(taskName) {
         Item: taskItem
     };
 
-    const result = await dynamoDBLib.call(call, params);
-    console.log(result);
+    await dynamoDBLib.call(call, params);
     return taskItem;
 }
+
+export default TaskService;
