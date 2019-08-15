@@ -13,3 +13,12 @@ export async function createTask(event, context) {
         return failure({ 'errorData': err });
     }
 };
+
+export async function listTasks(event, context) {
+    try {
+        const result = await taskService.listTasks();
+        return success({ 'result': result });
+    } catch (err) {
+        return failure({ 'error': err });
+    }
+};

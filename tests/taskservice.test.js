@@ -10,3 +10,9 @@ test('test-createtask', async () => {
     expect(result)
 });
 
+test('test-listtasks', async () => {
+    const taskService = new TaskService();
+    const result = await taskService.listTasks()
+    expect(result)
+});
+

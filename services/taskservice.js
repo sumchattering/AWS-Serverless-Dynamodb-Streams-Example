@@ -9,7 +9,8 @@ function TaskService(opts) {
 }
 
 TaskService.prototype = {
-    createNewTask
+    createNewTask,
+    listTasks
 };
 
 async function createNewTask(taskName) {
@@ -33,6 +34,15 @@ async function createNewTask(taskName) {
 
     await dynamoDBLib.call(call, params);
     return taskItem;
+}
+
+async function listTasks() {
+    const call = "scan";
+    const params = {
+        TableName: tasksTableName
+    };
+    const result = await dynamoDBLib.call(call, params);
+    return result.Items;
 }
 
 export default TaskService;

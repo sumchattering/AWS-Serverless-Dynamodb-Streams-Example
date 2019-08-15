@@ -36,6 +36,12 @@ functions:
       - http:
           path: createTask
           method: post
+  listTasks:
+    handler: handler.listTasks
+    events:
+      - http:
+          path: listTasks
+          method: get  
     
 package:
   individually: true
