@@ -10,6 +10,6 @@ export async function createTask(event, context) {
         const result = await taskService.createNewTask(taskName);
         return success({ 'data': result });
     } catch(err) {
-        return failure(err);
+        return failure({ 'errorData': err });
     }
 };
