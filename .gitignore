@@ -65,3 +65,6 @@ typings/
 
 # Dynamodb
 .dynamodb
+
+# Webpack
+.webpack
