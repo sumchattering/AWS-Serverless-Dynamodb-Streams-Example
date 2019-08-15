@@ -14,6 +14,6 @@ Service.prototype = {
 
 function doSomething() {
     return Promise.resolve(
-        new Model({ key: 'hello', value: 'world' })
+        new Task({ key: 'hello', value: 'world' })
     );
 }

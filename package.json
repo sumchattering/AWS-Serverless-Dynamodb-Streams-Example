@@ -1,0 +1,25 @@
+{
+  "name": "serverless-dynamodb-streams-example",
+  "version": "1.0.0",
+  "description": "A Node.js example for the Serverless Framework for working with dyanmodb streams",
+  "main": "handler.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "license": "MIT",
+  "author": "Sumeru Chatterjee",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sumchattering/serverless-dynamodb-streams-example.git"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.507.0",
+    "jest": "^24.8.0",
+    "serverless-bundle": "^1.2.2",
+    "serverless-offline": "^5.3.3"
+  },
+  "dependencies": {
+    "joi": "^14.3.1",
+    "uuid": "^3.3.2"
+  }
+}
