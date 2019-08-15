@@ -1,10 +1,8 @@
-'use strict';
-
 const Joi = require('joi');
 
 function Task(opts) {
     const validationError = Joi.validate(opts, {
-       	id: Joi.string().required(),
+        id: Joi.string().required(),
         name: Joi.string().required(),
         slug: Joi.string().regex(/^\S+$/),
     }).error;

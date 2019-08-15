@@ -1,3 +1,4 @@
+'use strict';
 
 const Task = require('../models/task')
 

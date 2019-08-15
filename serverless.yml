@@ -1,17 +1,26 @@
 
 service: serverless-dynamodb-streams-example 
 
-custom: ${file(config/${opt:stage}-env.json)}
+plugins:
+  - serverless-bundle
+  - serverless-dynamodb-local
+  - serverless-offline
+
+custom:
+  env: ${file(config/${opt:stage}-env.json)}
+  dynamodb:
+    stages:
+      - ${self:provider.stage}
 
 provider:
   name: aws
   runtime: nodejs8.10
   region: eu-central-1
-  environment: ${self:custom}
+  environment: ${self:custom.env}
 
 functions:
-  handler:
-    handler: handler.handler
+  createTask:
+    handler: handler.createTask
     
 package:
   individually: true

@@ -1,23 +1,18 @@
-'use strict';
-
-const config = require('./config/config');
-const response = require('./util/response');
-const Service = require('./services/service');
-
-const service = new Service();
+const response = require('./util/response-lib');
+const TaskService = require('./services/taskservice');
+const taskService = new TaskService();
 
 module.exports = {
-    handler
-}
+    createTask
+};
 
-async function handler(event, context, callback) {
+async function createTask(event, context, callback) {
     try {
-
-        const result = await service.doSomething();
+        const data = JSON.parse(event.body);
+        const taskName = data.name;
+        const result = await taskService.createNewTask(taskName);
         callback(null, response.ok({ data: result }));
-    
     } catch(err) {
-    	
         callback(err, response.serverError(err));
     }
 };
