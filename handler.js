@@ -15,7 +15,7 @@ export async function createTask(event, context) {
 };
 
 export async function listTasks(event, context) {
-    try {
+    try {sls
         const result = await taskService.listTasks();
         return success({ 'result': result });
     } catch (err) {

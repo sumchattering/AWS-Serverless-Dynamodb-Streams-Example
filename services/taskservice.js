@@ -2,8 +2,6 @@ import Task from '../models/Task';
 import * as dynamoDBLib from "../util/dynamodb-lib";
 import uuid from 'uuid';
 
-const tasksTableName = "tasks";
-
 function TaskService(opts) {
     Object.assign(this, opts);
 }
@@ -28,7 +26,7 @@ async function createNewTask(taskName) {
         createdAt: Date.now()
     };
     const params = {
-        TableName: tasksTableName,
+        TableName: process.env.tableName,
         Item: taskItem
     };
 
@@ -39,7 +37,7 @@ async function createNewTask(taskName) {
 async function listTasks() {
     const call = "scan";
     const params = {
-        TableName: tasksTableName
+        TableName: process.env.tableName
     };
     const result = await dynamoDBLib.call(call, params);
     return result.Items;

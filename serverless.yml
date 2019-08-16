@@ -4,6 +4,7 @@ plugins:
   - serverless-bundle
   - serverless-dynamodb-local
   - serverless-offline
+  - serverless-export-env
 
 custom:
   stage: ${opt:stage, self:provider.stage}

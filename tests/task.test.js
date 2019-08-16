@@ -1,5 +1,8 @@
 import Task from '../models/task'
 
+import dotenv from "dotenv"
+dotenv.config({ path: ".env" });
+
 test('test-badkeys', () => {
     try {
         var task = new Task({

@@ -14,8 +14,10 @@
   },
   "devDependencies": {
     "aws-sdk": "^2.507.0",
+    "dotenv": "^8.0.0",
     "serverless-bundle": "^1.2.3",
     "serverless-dynamodb-local": "^0.2.38",
+    "serverless-export-env": "github:arabold/serverless-export-env",
     "serverless-offline": "^5.3.3"
   },
   "dependencies": {
