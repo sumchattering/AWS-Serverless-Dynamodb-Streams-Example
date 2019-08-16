@@ -1,5 +1,6 @@
 import { success, failure } from "./util/response-lib";
 import TaskService from './services/taskservice';
+import Task from './models/task';
 
 const taskService = new TaskService();
 
@@ -26,6 +27,26 @@ export async function listTasks(event, context) {
 };
 
 export async function processTasksStream(event, context) {
-    console.log(event);
-    console.log(context);
-}
+    try {
+        const eventDict = event["Records"][0];
+        if (eventDict["eventName"] == "INSERT") {
+            const eventDynamoDBDict = eventDict["dynamodb"];
+
+            const newEventDict = eventDynamoDBDict["NewImage"];
+            const taskId = newEventDict["id"]["S"];
+            const taskName = newEventDict["name"]["S"];
+            const taskSlug = taskName.replace(/ /g, "_");
+
+            const task = new Task({
+                id: taskId,
+                name: taskName,
+                slug: taskSlug
+            });
+
+            const result = await taskService.updateTask(task);
+            console.log("Record Updated " + result);
+        }
+    } catch (err) {
+        console.error("Error while processing tasks stream: " + err);
+    }
+};

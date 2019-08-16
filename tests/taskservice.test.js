@@ -1,4 +1,5 @@
 import TaskService from '../services/taskservice'
+import Task from '../models/task'
 
 import AWS from "aws-sdk";
 AWS.config.update({ region: 'eu-central-1' });
@@ -19,3 +20,13 @@ test('test-listtasks', async () => {
     expect(result)
 });
 
+test('test-updatetask', async () => {
+    const taskService = new TaskService();
+    const task = new Task({
+        id: "id100",
+        name: "Sample Task",
+        slug: "Sample-Task"
+    })
+    const result = await taskService.updateTask(task)
+    expect(result)
+});

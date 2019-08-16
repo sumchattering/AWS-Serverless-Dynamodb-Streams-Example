@@ -5,7 +5,7 @@ dotenv.config({ path: ".env" });
 
 test('test-badkeys', () => {
     try {
-        var task = new Task({
+        const task = new Task({
             badkey: "badvalue"
         })
     } catch(e) {
@@ -16,7 +16,7 @@ test('test-badkeys', () => {
 
 test('test-incompletekeys', () => {
     try {
-        var task = new Task({
+        const task = new Task({
             name: "Sample Task"
         })
     } catch (e) {
@@ -26,7 +26,7 @@ test('test-incompletekeys', () => {
 });
 
 test('test-validkeys', () => {
-    var task = new Task({
+    const task = new Task({
         id: "id100",
         name: "Sample Task"
     })
@@ -35,7 +35,7 @@ test('test-validkeys', () => {
 
 test('test-invalid-slug', () => {
     try {
-        var task = new Task({
+        const task = new Task({
             id: "id100",
             name: "Sample Task",
             slug: "Sample Task"
@@ -47,7 +47,7 @@ test('test-invalid-slug', () => {
 });
 
 test('test-valid-slug', () => {
-    var task = new Task({
+    const task = new Task({
         id: "id100",
         name: "Sample Task",
         slug: "Sample-Task"

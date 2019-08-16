@@ -8,7 +8,8 @@ function TaskService(opts) {
 
 TaskService.prototype = {
     createNewTask,
-    listTasks
+    listTasks,
+    updateTask
 };
 
 async function createNewTask(taskName) {
@@ -41,6 +42,24 @@ async function listTasks() {
     };
     const result = await dynamoDBLib.call(call, params);
     return result.Items;
+}
+
+async function updateTask(task) {
+    const call = "update";
+    const params = {
+        TableName: process.env.tableName,
+        Key: {
+            id: task.id,
+            name: task.name
+        },
+        UpdateExpression: "SET slug = :slug",
+        ExpressionAttributeValues: {
+            ":slug": task.slug || null,
+        },
+        ReturnValues: "ALL_NEW"
+    };
+    const result = await dynamoDBLib.call(call, params);
+    return result;
 }
 
 export default TaskService;
