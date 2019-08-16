@@ -44,7 +44,7 @@ export async function processTasksStream(event, context) {
             });
 
             const result = await taskService.updateTask(task);
-            console.log("Record Updated " + result);
+            console.log("Record Updated " + JSON.stringify(result, null, 2));
         }
     } catch (err) {
         console.error("Error while processing tasks stream: " + err);
