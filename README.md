@@ -6,6 +6,10 @@
 
 To deploy the stack on your own aws account just run "sls deploy"
 
+## Unit Testing 
+
+To run unit tests run "sls export-env" and then "npm test"
+
 ## Testing 
 
 The stack is currently deployed with the public endpoints GET **https://bxvd61lx0l.execute-api.eu-central-1.amazonaws.com/dev/listTasks** and POST **https://bxvd61lx0l.execute-api.eu-central-1.amazonaws.com/dev/createTask**
