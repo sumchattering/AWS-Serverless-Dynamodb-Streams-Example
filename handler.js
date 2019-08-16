@@ -8,17 +8,24 @@ export async function createTask(event, context) {
         const data = JSON.parse(event.body);
         const taskName = data.name;
         const result = await taskService.createNewTask(taskName);
-        return success({ 'data': result });
+        return success({ 'result': result });
     } catch(err) {
-        return failure({ 'errorData': err });
+        console.error(err);
+        return failure(err);
     }
 };
 
 export async function listTasks(event, context) {
-    try {sls
+    try {
         const result = await taskService.listTasks();
         return success({ 'result': result });
     } catch (err) {
-        return failure({ 'error': err });
+        console.error(err);
+        return failure(err);
     }
 };
+
+export async function processTasksStream(event, context) {
+    console.log(event);
+    console.log(context);
+}
